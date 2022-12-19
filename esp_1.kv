@@ -1,0 +1,181 @@
+#:kivy 2.1.0  
+
+
+MDScreen:
+
+    MDBottomNavigation:
+        panel_color: 1, 1, 1, 1
+        selected_color_background: 0.6, 0.67, 0.71, 1
+        text_color_active: 0, 0, 0, 1
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Home'
+            icon: 'home-circle'
+
+            MDBoxLayout:
+                orientation: 'vertical' 
+                md_bg_color: 1, 1, 1, 1
+
+                MDLabel:
+                    text: 'The Existential Stoic Podcast'
+                    halign: 'center'
+                    font_style: 'H2'
+                    theme_text_color: 'Custom'
+                    text_color: 0.06, 0.77, 0.42, 1
+                
+                Image:
+                    source: 'images/esp_logo.png'
+                    size: self.texture_size
+                
+                MDLabel:
+                    text: 'with Danny & Randy'
+                    halign: 'center'
+                    font_style: 'H6'
+                    theme_text_color: 'Custom'
+                    text_color: 0.02, 0.02, 0.02, 1
+            
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: "Esp's Top Episodes"
+            icon: 'alpha-e-box'
+
+            MDCard:
+                size_hint: 1, 0.8
+                focus_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDBoxLayout: 
+                    id: top_ep 
+                    orientation: 'vertical' 
+                    md_bg_color: 0.96, 1, 1, 1
+                    
+            MDAnchorLayout:
+                anchor_x: 'left'
+                anchor_y: 'bottom'
+                padding: [10, 0, 0, 5]
+
+                MDFillRoundFlatIconButton:
+                    icon: 'alpha-e-box'
+                    text: "ESP's Top Episodes"
+                    on_release: app.top_episodes() 
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Info'
+            icon: 'information-variant'
+            
+            MDCard:
+                size_hint: 0.7, 0.6
+                focus_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5} 
+                
+                MDBoxLayout:
+                    orientation: 'vertical' 
+                    md_bg_color: 0.96, 1, 1, 1
+
+                    MDLabel:
+                        id: tot_eps
+                        text: ""
+                        halign: 'center'
+                
+            MDAnchorLayout:
+                anchor_x: 'right'
+                anchor_y: 'bottom'
+                padding: [0, 0, 20, 30]
+
+                MDFillRoundFlatIconButton:
+                    icon: 'spotify'
+                    text: 'Listen on Spotify'
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://www.spotify.com/us/')
+            
+            MDAnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'bottom'
+                padding: [0, 0, 0, 30]
+                    
+                MDFillRoundFlatIconButton:
+                    icon: 'google-podcast'
+                    text: 'Listen on Google Podcasts'
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMzgyMDUzLnJzcw')
+
+            MDAnchorLayout:
+                anchor_x: 'left'
+                anchor_y: 'bottom'
+                padding: [10, 0, 0, 30]
+
+                MDFillRoundFlatIconButton:
+                    icon: 'information-variant'
+                    text: "Press for ESP Info"
+                    on_press: app.esp_data_report() 
+
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: 'Recommendations'
+            icon: 'dice-multiple-outline'
+
+            MDCard:
+                size_hint: 0.8, 0.75
+                focus_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5} 
+                
+                MDBoxLayout:
+                    id: rec_eps
+                    orientation: 'vertical'
+                    md_bg_color: 0.96, 1, 1, 1
+
+            MDAnchorLayout:
+                anchor_x: 'left'
+                anchor_y: 'bottom'
+                padding: [10, 0, 0, 30]
+
+                MDFillRoundFlatIconButton:
+                    icon: 'dice-multiple-outline'
+                    text: "Episode Recommendations"
+                    on_release: app.recommended_eps() 
+        
+        MDBottomNavigationItem:
+            name: 'screen 5'
+            text: 'Listen & Connect'
+            icon: 'headphones'
+
+            MDCard:
+                size_hint: 0.8, 0.75
+                focus_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5} 
+                md_bg_color: 0.96, 1, 1, 1
+                
+                Image:
+                    source: 'images/esp_logo_2.png'
+                    size: self.texture_size 
+
+            MDAnchorLayout:
+                anchor_x: 'right'
+                anchor_y: 'bottom'
+                padding: [0, 0, 20, 30]
+
+                MDFillRoundFlatIconButton:
+                    icon: 'web'
+                    text: "Open ESP's Webpage"
+                    on_release: 
+                        import webbrowser 
+                        webbrowser.open('https://existentialstoicpodcast.buzzsprout.com')
+            
+            MDAnchorLayout:
+                anchor_x: 'left'
+                anchor_y: 'bottom'
+                padding: [20, 0, 0, 30]
+
+                MDFillRoundFlatIconButton:
+                    icon: 'youtube'
+                    text: "Open ESP's YouTube Channel"
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://www.youtube.com/channel/UCDeaMFb2Fw8gf6i0v8bg-vA')
+            
+        
+                    
